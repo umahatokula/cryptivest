@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "E:\\react_apps\\blockvest\\contracts\\Staking.sol": {
-      "lastModificationDate": 1667563774042,
+    "E:\\react-apps\\cryptivest\\contracts\\Staking.sol": {
+      "lastModificationDate": 1670092147594,
       "contentHash": "f3ab142296472eddc65dfd68bae5fe4e",
       "sourceName": "contracts/Staking.sol",
       "solcConfig": {
