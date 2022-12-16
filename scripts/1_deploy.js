@@ -1,5 +1,7 @@
+const { ethers } = require("hardhat");
+
 async function main() {
-  [signer1, signer2] = await ethers.getSigners();
+  [signer1, signer2, signer3] = await ethers.getSigners();
 
   const Staking = await ethers.getContractFactory('Staking', signer1);
 
@@ -38,6 +40,17 @@ async function main() {
   block = await provider.getBlock(receipt.blockNumber)
   newUnlockDate = block.timestamp - (60 * 60 * 24 * 100)
   await staking.connect(signer1).changeUnlockdate(4, newUnlockDate)
+
+  data = {value: ethers.utils.parseEther('1')}
+  transaction = await staking.connect(signer3).stakeEther(180, data)
+
+  data = {value: ethers.utils.parseEther('1.75')}
+  transaction = await staking.connect(signer3).stakeEther(180, data)
+
+  //==============================================
+  const assetIds = await staking.connect(signer1).getPositionIdsForAddress(signer3.address)
+  console.log(assetIds)
+  //==============================================
 }
 
 // npx hardhat run --network localhost scripts/1_deploy.js
